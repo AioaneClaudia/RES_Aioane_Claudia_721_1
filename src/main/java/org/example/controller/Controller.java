@@ -8,6 +8,7 @@ import org.example.repository.MissionEventRepo;
 import org.example.repository.SupplyRepo;
 import org.example.service.AstronautService;
 
+import java.io.FileWriter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -41,5 +42,14 @@ public class Controller {
         System.out.println("3");
         astronautService.sortByExperience(astronauts)
                 .forEach(System.out::println);
+
+        //4
+        System.out.println("4");
+        List<Astronaut> sorted = astronautService.sortByExperience(astronauts);
+        try (FileWriter fw = new FileWriter("D:\\Claudia\\IdeaProjects\\Nachprufung\\src\\main\\java\\org\\example\\astronauts_sorted.txt")){
+            for (Astronaut  a:sorted){
+                fw.write(a.toString()+"\n");
+            }
+        }
     }
 }

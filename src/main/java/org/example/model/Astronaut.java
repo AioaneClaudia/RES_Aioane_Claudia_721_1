@@ -53,4 +53,9 @@ public class Astronaut {
     public void setExperienceLevel(int experienceLevel) {
         this.experienceLevel = experienceLevel;
     }
+
+    @Override
+    public String toString() {
+        return "[#"+id+"]"+" "+name+" | "+spacecraft+" | "+status+" | "+experienceLevel;
+    }
 }

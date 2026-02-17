@@ -1,0 +1,15 @@
+[#1] Ava Ionescu | Orion | ACTIVE | 9
+[#9] Ioana Rusu | Dragon | LOST | 9
+[#11] Bianca Tudor | Orion | ACTIVE | 8
+[#7] Clara Neagu | Starliner | INACTIVE | 8
+[#2] Mihai Petrescu | Dragon | ACTIVE | 8
+[#10] Daniel Voicu | Starliner | ACTIVE | 7
+[#3] Elena Pop | Orion | INACTIVE | 7
+[#5] Sofia Marin | Dragon | ACTIVE | 7
+[#14] Teodor Matei | Orion | ACTIVE | 7
+[#12] Horia Pascu | Dragon | INACTIVE | 6
+[#15] Larisa Dobre | Dragon | ACTIVE | 6
+[#4] Radu Stan | Starliner | ACTIVE | 6
+[#8] Victor Iliescu | Orion | ACTIVE | 6
+[#6] Andrei Dumitru | Orion | ACTIVE | 5
+[#13] Nadia Ene | Starliner | ACTIVE | 5
