@@ -51,5 +51,10 @@ public class Controller {
                 fw.write(a.toString()+"\n");
             }
         }
+
+        //5
+        System.out.println("5");
+        missionEvents.stream().limit(5).forEach(e->System.out.println("Event"+"<"+e.getId()+"> -> "+
+                "raw= "+e.getBasePoints()+" -> "+"computed= "+e.computePoints()));
     }
 }

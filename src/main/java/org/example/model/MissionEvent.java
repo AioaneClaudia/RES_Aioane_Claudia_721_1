@@ -10,7 +10,7 @@ public class MissionEvent {
     @JsonProperty("day")
     private int day;
     @JsonProperty("type")
-    private String type;
+    private MissionEventType type;
     @JsonProperty("basePoints")
     private int basePoints;
 
@@ -38,11 +38,11 @@ public class MissionEvent {
         this.day = day;
     }
 
-    public String getType() {
+    public MissionEventType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(MissionEventType type) {
         this.type = type;
     }
 
@@ -53,4 +53,13 @@ public class MissionEvent {
     public void setBasePoints(int basePoints) {
         this.basePoints = basePoints;
     }
-}
+
+    public int computePoints() {
+        return switch (type) {
+            case EVA -> basePoints + 2 * day ;
+            case SYSTEM_FAILURE -> basePoints - 3 - day ;
+            case SCIENCE -> basePoints + (day % 4);
+            case MEDICAL -> basePoints - 2 * (day % 3);
+            case COMMUNICATION -> basePoints + 5;
+        };
+}}

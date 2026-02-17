@@ -1,4 +1,9 @@
 package org.example.model;
 
-public class MissionEventType {
+public enum MissionEventType {
+    EVA,
+    SYSTEM_FAILURE,
+    SCIENCE,
+    MEDICAL,
+    COMMUNICATION
 }
