@@ -37,5 +37,9 @@ public class Controller {
         astronautService.filterBySpacecraft(astronauts, spacecraft)
                 .forEach(System.out::println);
 
+        //3
+        System.out.println("3");
+        astronautService.sortByExperience(astronauts)
+                .forEach(System.out::println);
     }
 }
