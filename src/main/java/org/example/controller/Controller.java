@@ -7,16 +7,20 @@ import org.example.repository.AstronautRepo;
 import org.example.repository.MissionEventRepo;
 import org.example.repository.SupplyRepo;
 import org.example.service.AstronautService;
+import org.example.service.EventService;
 
 import java.io.FileWriter;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Controller {
     private final AstronautService astronautService=new AstronautService();
     private final AstronautRepo astronautRepo=new AstronautRepo();
     private final SupplyRepo supplyRepo=new SupplyRepo();
     private final MissionEventRepo missionEventRepo=new MissionEventRepo();
+    private final EventService eventService=new EventService();
 
     public void run() throws Exception{
         List<Astronaut> astronauts=astronautRepo.load("D:\\Claudia\\IdeaProjects\\Nachprufung\\src\\main\\resources\\astronauts.json");
@@ -56,5 +60,27 @@ public class Controller {
         System.out.println("5");
         missionEvents.stream().limit(5).forEach(e->System.out.println("Event"+"<"+e.getId()+"> -> "+
                 "raw= "+e.getBasePoints()+" -> "+"computed= "+e.computePoints()));
+
+        // 6 Ranking
+        Map<Integer, Integer> eventScores = eventService.computeScores(missionEvents);
+        Map<Integer, Integer> supplyScores = supplies.stream()
+                .collect(Collectors.groupingBy(
+                        Supply::getAstronautId,
+                        Collectors.summingInt(Supply::getValue)
+                ));
+
+        astronauts.stream()
+                .map(t -> Map.entry(
+                        t.getName(),
+                        eventScores.getOrDefault(t.getId(), 0) +
+                                supplyScores.getOrDefault(t.getId(), 0)))
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed()
+                        .thenComparing(Map.Entry::getKey))
+                .limit(5)
+                .forEachOrdered(e ->
+                        System.out.println(e.getKey() + " -> " + e.getValue())
+                );
+
+
     }
 }
