@@ -94,5 +94,9 @@ public class Controller {
                                 (eventScores.getOrDefault(v.getId(), 0) +
                                         supplyScores.getOrDefault(v.getId(), 0))
                 ));
+
+        //7
+        System.out.println("7");
+
     }
 }

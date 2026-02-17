@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.model.MissionEvent;
+import org.example.model.MissionEventType;
 
 import java.util.List;
 import java.util.Map;
@@ -13,4 +14,11 @@ public class EventService {
                         MissionEvent::getAstronautId,
                         Collectors.summingInt(MissionEvent::computePoints)
                 ));
-}}
+    }
+
+//    public int eventsProMission(List<MissionEvent> events) {
+//        return events.stream()
+//                .count(Collectors.groupingBy(
+//                        MissionEvent::getType);
+//
+}
