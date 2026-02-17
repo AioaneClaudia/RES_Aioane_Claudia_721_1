@@ -10,6 +10,7 @@ import org.example.service.AstronautService;
 import org.example.service.EventService;
 
 import java.io.FileWriter;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -62,6 +63,7 @@ public class Controller {
                 "raw= "+e.getBasePoints()+" -> "+"computed= "+e.computePoints()));
 
         // 6 Ranking
+        System.out.println("6");
         Map<Integer, Integer> eventScores = eventService.computeScores(missionEvents);
         Map<Integer, Integer> supplyScores = supplies.stream()
                 .collect(Collectors.groupingBy(
@@ -81,6 +83,16 @@ public class Controller {
                         System.out.println(e.getKey() + " -> " + e.getValue())
                 );
 
-
+        astronauts.stream()
+                .max(Comparator.comparingInt(v ->
+                        eventScores.getOrDefault(v.getId(), 0) +
+                                supplyScores.getOrDefault(v.getId(), 0)
+                ))
+                .ifPresent(v -> System.out.println(
+                        "Spacecraft des Astronauten aud 1. Platz:" +
+                                v.getSpacecraft() + " -> " +
+                                (eventScores.getOrDefault(v.getId(), 0) +
+                                        supplyScores.getOrDefault(v.getId(), 0))
+                ));
     }
 }
